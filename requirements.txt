@@ -1,0 +1,6 @@
+flask==2.1.0
+pandas
+numpy
+flask_table
+sklearn
+gunicorn==20.1.0

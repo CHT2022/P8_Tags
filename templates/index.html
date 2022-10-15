@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <head>
+        <html lang="en" dir="ltr">
+        <meta charset="utf-8">
+        <title> Tag recommendation </title> 
+            
+        <style type="text/css">    
+            html { 
+              background-color:#a9a9a9;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+             }
+            
+          body
+          {
+            border: 0px solid black;
+            padding: 0px;
+            background-repeat: no-repeat;
+            background-size: 450px 450px; 
+            background-position: center center;
+            } 
+            
+            div {margin-left: 300px}
+            p {margin-left: inherit}
+
+            .button {
+              border: none;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            }
+
+            .btn-get {
+              background-color: blue; 
+              color: #FFA500; 
+              border: 2px solid #FFA500;
+              width:500px;
+              height: 50px;
+            }
+            
+            textarea {
+                border-color: #FFA500;
+                border-style: solid;
+                border-width: 2px;
+                width:500px;
+                height: 100px;
+            }
+            
+        </style>
+            
+    </head>
+
+    <body>
+   
+        {% block content %}
+        <br>
+        <p style="text-align:center;"><img src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg" alt="Logo"></p>
+        <h2 style="text-align:center;"><font color="black"> Enter your question for getting some recommended tags </h2>
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+        <form action="{{ url_for('index') }}" method="POST">
+            <p style="text-align:center;"><textarea id="fquestion" name="fquestion" rows="4" cols="50" value="{{ request.form['fquestion'] }}"></textarea></p> 
+            <p style="text-align:center;"><button type="submit" class="button btn-get">Search</button></p>
+        </form>
+        <h2 style="text-align:center;">The recommended tags are :</h2>   
+        <h2 style="text-align:center;">{{ tags }}</h2> 
+        {% endblock %}
+    </body>
+</html>
+
